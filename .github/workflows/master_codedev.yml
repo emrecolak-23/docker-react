@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://codedev.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_36cdb57707954e2ab284661079f6c7c1 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_a88baeea15394a5280a13fc556dec253 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_1b757927027b4df4bbc4e7c34cdf096a }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_664dd9b04b674cd8aec3a1b149228bc3 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: codedev.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_36cdb57707954e2ab284661079f6c7c1 }}/codedev/react-docker:${{ github.sha }}
+        tags: codedev.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1b757927027b4df4bbc4e7c34cdf096a }}/codedev/react-docker:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'codedev'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_16d421f80ff940d389e477d861e93cee }}
-        images: 'codedev.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_36cdb57707954e2ab284661079f6c7c1 }}/codedev/react-docker:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b9042f1dad104302871eab7c14bd70b9 }}
+        images: 'codedev.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1b757927027b4df4bbc4e7c34cdf096a }}/codedev/react-docker:${{ github.sha }}'
